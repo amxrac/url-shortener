@@ -11,3 +11,7 @@ Content-Type: application/json
 GET {{UrlShortener_HostAddress}}/VFb1MOFg
 
 ###
+
+GET {{UrlShortener_HostAddress}}/
+
+###

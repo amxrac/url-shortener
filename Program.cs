@@ -49,6 +49,7 @@ using (var scope = app.Services.CreateScope())
 
 app.MapPost("/shorten", GetShortUrl);
 app.MapGet("/{code}", RedirectToOriginal);
+app.MapGet("/", Home);
 
 static async Task<IResult> GetShortUrl(AppDbContext _context, [FromBody] ShortenRequest request, HttpContext httpContext)
 {
@@ -79,6 +80,10 @@ static async Task<IResult> RedirectToOriginal(string code, AppDbContext _context
     return url is null ? TypedResults.NotFound() : TypedResults.Redirect(url.LongUrl);
 }
 
+static IResult Home()
+{
+    return TypedResults.Ok( new { message = "hello" });
+}
 //app.UseHttpsRedirection();
 
 app.Run();
