@@ -41,6 +41,11 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var _context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    _context.Database.Migrate();
+}
 
 app.MapPost("/shorten", GetShortUrl);
 app.MapGet("/{code}", RedirectToOriginal);
