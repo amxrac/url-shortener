@@ -74,7 +74,7 @@ static async Task<IResult> RedirectToOriginal(string code, AppDbContext _context
     return url is null ? TypedResults.NotFound() : TypedResults.Redirect(url.LongUrl);
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.Run();
 
